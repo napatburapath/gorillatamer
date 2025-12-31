@@ -104,7 +104,7 @@ check_attention <- function(data,
 #' Function to check accuracy ranking.
 #'
 #' @param data Untouched Gorilla task data. check.names=FALSE
-#' @param col Vector of column names for first round cleaning. Defaults to treehouse task names.
+#' @param col Vector of column names for first round cleaning. Already includes cols 'Response' 'display' and 'Participant Public ID'. Defaults to treehouse task names.
 #' @param bonus double representing bonus payout per correct choice.
 #' @return Array of subjID that failed >2 questions, or no message else.
 #' @export
@@ -123,6 +123,19 @@ check_answers <- function(data, col = NULL, bonus) {
       "Store: newStore4", "Store: newStore5",
       "Store: profile_selected_image")
   }
+
+  if(!("Response" %in% col)) {
+    col <- c(col, "Response")
+  }
+
+  if(!("display" %in% col)) {
+    col <- c(col, "display")
+  }
+
+  if(!("Participant Public ID" %in% col)) {
+    col <- c(col, "Participant Public ID")
+  }
+
 
   # Get only the Participant Public ID and correct answer per trial
   data <- data %>%

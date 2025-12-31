@@ -9,7 +9,7 @@ check_answers(data, col = NULL, bonus)
 \arguments{
 \item{data}{Untouched Gorilla task data. check.names=FALSE}
 
-\item{col}{Vector of column names for first round cleaning. Defaults to treehouse task names.}
+\item{col}{Vector of column names for first round cleaning. Already includes cols 'Response' 'display' and 'Participant Public ID'. Defaults to treehouse task names.}
 
 \item{bonus}{double representing bonus payout per correct choice.}
 }
