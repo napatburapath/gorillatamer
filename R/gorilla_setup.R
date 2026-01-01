@@ -1,5 +1,4 @@
 
-
 cols <- c("Store: cumulative_winning", "Store: amount_won", "Participant Public ID",
           "randomiser-mai6", "Response", "display",
           "Spreadsheet: db_rank1", "Spreadsheet: db_rank2",

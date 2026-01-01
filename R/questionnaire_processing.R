@@ -1,3 +1,7 @@
+#' @importFrom dplyr select arrange filter
+#' @importFrom magrittr %>%
+
+
 pascq <- c("My parents/carers let me know they love me",
            "My parents/carers enjoy being with me",
            "My parents/carers are always glad to see me",
