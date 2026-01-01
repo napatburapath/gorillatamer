@@ -204,8 +204,6 @@ extract_questions <- function(data, subjID_col = NULL, remove = NULL) {
     qu_items <- std(questions[[qu_name]])
     score <- scoring[[qu_name]]
 
-    print(qu_items)
-
     for(item in qu_items) {
       # Find column matching this item
       col_idx <- which(colnames(processed) == item)
