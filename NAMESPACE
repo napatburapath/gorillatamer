@@ -2,4 +2,5 @@
 
 export(check_answers)
 export(check_attention)
+export(extract_questions)
 export(process_raw_data)
