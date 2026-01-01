@@ -39,9 +39,10 @@ pascq_scoring <- c("Not at all true", "Not very true", "Sort of true", "Very tru
 #' @param data raw questionnaire csv as exported per guideline.
 #' @param subjID_col colname to represent unique subject ID. Defaults to Participant Public ID.
 #' @param remove vector of any questions in between questionnaire items to remove. Defaults to DAS lab 2025 attention check questions.
+#' @param sum_only do you want only the sum scores? Defaults to TRUE.
 #' @return Processed questionnaire data frame
 #' @export
-extract_questions <- function(data, subjID_col = NULL, remove = NULL) {
+extract_questions <- function(data, subjID_col = NULL, remove = NULL, sum_only = TRUE) {
 
   # Question definitions
   questions <- list(
@@ -97,15 +98,15 @@ extract_questions <- function(data, subjID_col = NULL, remove = NULL) {
 
   # Scoring mappings
   scoring <- list(
-    phq8 = c("Not at all" = 1, "Several days" = 2,
-             "More than half the days" = 3, "Nearly every day" = 4,
+    phq8 = c("Not at all" = 0, "Several days" = 1,
+             "More than half the days" = 2, "Nearly every day" = 3,
              "Prefer not to say" = NA),
-    gad7 = c("Not at all" = 1, "Several days" = 2,
-             "More than half the days" = 3, "Nearly every day" = 4,
+    gad7 = c("Not at all" = 0, "Several days" = 1,
+             "More than half the days" = 2, "Nearly every day" = 3,
              "Prefer not to say" = NA),
-    ius12 = c("1" = 1, "2" = 2, "3" = 3, "4" = 4, "5" = 5),
-    o2s3 = c("0 - Strongly disagree" = 1, "1 - Moderately disagree" = 2,
-             "2 - Moderately agree" = 3, "3 - Strongly agree" = 4,
+    ius12 = c("1" = 0, "2" = 1, "3" = 2, "4" = 3, "5" = 4, "Prefer not to say" = NA),
+    o2s3 = c("0 - Strongly disagree" = 0, "1 - Moderately disagree" = 1,
+             "2 - Moderately agree" = 2, "3 - Strongly agree" = 3,
              "Prefer not to say" = NA)
   )
 
@@ -216,7 +217,21 @@ extract_questions <- function(data, subjID_col = NULL, remove = NULL) {
   }
 
 
-  processed[,!is.character(processed[1, ])]
+  new_names <- c(subjID)
+  for(qu_name in names(questions)) {
+    new_names <- c(new_names, paste(qu_name, 1:length(questions[[qu_name]]), sep = "_"))
+  }
+  colnames(processed) <- new_names
+
+  for(qu_name in names(questions)) {
+    processed <- processed %>%
+      mutate(!!paste0(qu_name, "_total") := rowSums(select(., all_of(paste(qu_name, 1:length(questions[[qu_name]]), sep = "_"))), na.rm = TRUE))
+  }
+
+  if(sum_only == TRUE) {
+    processed <- processed %>%
+      select(contains("total"))
+  }
 
 
   return(processed)

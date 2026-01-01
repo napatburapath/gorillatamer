@@ -4,7 +4,7 @@
 \alias{extract_questions}
 \title{Gather questionnaire data}
 \usage{
-extract_questions(data, subjID_col = NULL, remove = NULL)
+extract_questions(data, subjID_col = NULL, remove = NULL, sum_only = TRUE)
 }
 \arguments{
 \item{data}{raw questionnaire csv as exported per guideline.}
@@ -12,6 +12,8 @@ extract_questions(data, subjID_col = NULL, remove = NULL)
 \item{subjID_col}{colname to represent unique subject ID. Defaults to Participant Public ID.}
 
 \item{remove}{vector of any questions in between questionnaire items to remove. Defaults to DAS lab 2025 attention check questions.}
+
+\item{sum_only}{do you want only the sum scores? Defaults to TRUE.}
 }
 \value{
 Processed questionnaire data frame
