@@ -230,7 +230,7 @@ extract_questions <- function(data, subjID_col = NULL, remove = NULL, sum_only =
 
   if(sum_only == TRUE) {
     processed <- processed %>%
-      select(contains("total"))
+      select(subjID, contains("total"))
   }
 
 
