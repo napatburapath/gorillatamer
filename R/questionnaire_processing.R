@@ -1,37 +1,6 @@
 #' @importFrom dplyr select arrange filter
 #' @importFrom magrittr %>%
 
-
-pascq <- c("My parents/carers let me know they love me",
-           "My parents/carers enjoy being with me",
-           "My parents/carers are always glad to see me",
-           "My parents/carers think I’m special",
-           "Sometimes I wonder if my parents/carers like me",
-           "My parents/carers think I’m always in the way",
-           "My parents/carers make me feel like I’m not wanted",
-           "Nothing I do is good enough for my parents/carers",
-           "When I want to do something, my parents/carers show me how",
-           "When I want to understand how something works, my parents/carers explain it to me",
-           "If I ever have a problem, my parents/carers help me to figure out what to do about it",
-           "My parents/carers explain the reasons for our family rules",
-           "When my parents/carers make a promise, I don’t know if they will keep it",
-           "When my parents/carers say they will do something, sometimes they don’t really do it",
-           "My parents/carers get mad at me with no warning",
-           "My parents/carers punish me for no reason",
-           "My parents/carers trust me",
-           "My parents/carers accept me for myself",
-           "My parents/carers encourage me to be true to myself",
-           "My parents/carers try to understand my point of view",
-           "My parents/carers are always telling me what to do",
-           "My parents/carers boss me",
-           "My parents/carers think there is only one right way to do things — their way",
-           "My parents/carers say \"no\" to everything")
-
-
-pascq_scoring <- c("Not at all true", "Not very true", "Sort of true", "Very true", "Prefer not to say")
-
-
-
 #' Gather questionnaire data
 #'
 #' Function to process raw questionnaire csv from Gorilla.
@@ -93,7 +62,31 @@ extract_questions <- function(data, subjID_col = NULL, remove = NULL, sum_only =
              "I prefer to post on social media sites where I can stay anonymous (i.e., without revealing my name or identity)",
              "If other people knew what I am really like, they would think less of me",
              "I worry about what others think of me",
-             "I feel insecure if I don’t receive positive responses to my social media posts")
+             "I feel insecure if I don’t receive positive responses to my social media posts"),
+    pascq <- c("My parents/carers let me know they love me",
+               "My parents/carers enjoy being with me",
+               "My parents/carers are always glad to see me",
+               "My parents/carers think I’m special",
+               "Sometimes I wonder if my parents/carers like me",
+               "My parents/carers think I’m always in the way",
+               "My parents/carers make me feel like I’m not wanted",
+               "Nothing I do is good enough for my parents/carers",
+               "When I want to do something, my parents/carers show me how",
+               "When I want to understand how something works, my parents/carers explain it to me",
+               "If I ever have a problem, my parents/carers help me to figure out what to do about it",
+               "My parents/carers explain the reasons for our family rules",
+               "When my parents/carers make a promise, I don’t know if they will keep it",
+               "When my parents/carers say they will do something, sometimes they don’t really do it",
+               "My parents/carers get mad at me with no warning",
+               "My parents/carers punish me for no reason",
+               "My parents/carers trust me",
+               "My parents/carers accept me for myself",
+               "My parents/carers encourage me to be true to myself",
+               "My parents/carers try to understand my point of view",
+               "My parents/carers are always telling me what to do",
+               "My parents/carers boss me",
+               "My parents/carers think there is only one right way to do things — their way",
+               "My parents/carers say \"no\" to everything")
   )
 
   # Scoring mappings
@@ -107,7 +100,8 @@ extract_questions <- function(data, subjID_col = NULL, remove = NULL, sum_only =
     ius12 = c("1" = 0, "2" = 1, "3" = 2, "4" = 3, "5" = 4, "Prefer not to say" = NA),
     o2s3 = c("0 - Strongly disagree" = 0, "1 - Moderately disagree" = 1,
              "2 - Moderately agree" = 2, "3 - Strongly agree" = 3,
-             "Prefer not to say" = NA)
+             "Prefer not to say" = NA),
+    pascq_scoring <- c("Not at all true" = 0, "Not very true" = 1, "Sort of true" = 2, "Very true" = 3, "Prefer not to say" = NA)
   )
 
 
