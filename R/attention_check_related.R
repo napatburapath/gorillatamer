@@ -5,7 +5,7 @@
 #'
 #' @param subj_col Name of the column to be used to identify subjects. Defaults to "Participant Public ID".
 #' @param data Untouched questionnaire data - short form with name only when downloading from Gorilla. check.names=FALSE.
-#' @param questions Vector of exact question as written. Defaults to DAS lab 2025 version.
+#' @param questions Vector of exact question AS WRITTEN. Defaults to DAS lab 2025 version.
 #' @param correct_answers Vector of correct answers in order of the questions. Defaults to DAS lab 2025 version.
 #' @return Array of subjID that failed >2 questions, or no message else.
 #' @export
