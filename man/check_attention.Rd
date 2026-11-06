@@ -16,7 +16,7 @@ check_attention(
 
 \item{subj_col}{Name of the column to be used to identify subjects. Defaults to "Participant Public ID".}
 
-\item{questions}{Vector of exact question as written. Defaults to DAS lab 2025 version.}
+\item{questions}{Vector of exact question AS WRITTEN. Defaults to DAS lab 2025 version.}
 
 \item{correct_answers}{Vector of correct answers in order of the questions. Defaults to DAS lab 2025 version.}
 }

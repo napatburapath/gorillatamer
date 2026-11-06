@@ -11,5 +11,10 @@ Tames the Gorilla.sc data.
 \author{
 \strong{Maintainer}: Napat Burapath \email{k.burapath@unsw.edu.au}
 
+Authors:
+\itemize{
+  \item Napat Burapath \email{k.burapath@unsw.edu.au}
+}
+
 }
 \keyword{internal}
