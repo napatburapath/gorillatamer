@@ -1,5 +1,4 @@
-#' @importFrom dplyr select arrange filter
-#' @importFrom magrittr %>%
+
 
 #' Gather questionnaire data
 #'
@@ -10,6 +9,8 @@
 #' @param remove vector of any questions in between questionnaire items to remove. Defaults to DAS lab 2025 attention check questions.
 #' @param sum_only do you want only the sum scores? Defaults to TRUE.
 #' @return Processed questionnaire data frame
+#' @importFrom dplyr select arrange filter
+#' @importFrom magrittr %>%
 #' @export
 extract_questions <- function(data, subjID_col = NULL, remove = NULL, sum_only = TRUE) {
 
@@ -63,30 +64,30 @@ extract_questions <- function(data, subjID_col = NULL, remove = NULL, sum_only =
              "If other people knew what I am really like, they would think less of me",
              "I worry about what others think of me",
              "I feel insecure if I don’t receive positive responses to my social media posts"),
-    pascq <- c("My parents/carers let me know they love me",
+    pascq_warmth <- c("My parents/carers let me know they love me",
                "My parents/carers enjoy being with me",
                "My parents/carers are always glad to see me",
-               "My parents/carers think I’m special",
-               "Sometimes I wonder if my parents/carers like me",
-               "My parents/carers think I’m always in the way",
-               "My parents/carers make me feel like I’m not wanted",
-               "Nothing I do is good enough for my parents/carers",
-               "When I want to do something, my parents/carers show me how",
-               "When I want to understand how something works, my parents/carers explain it to me",
-               "If I ever have a problem, my parents/carers help me to figure out what to do about it",
-               "My parents/carers explain the reasons for our family rules",
-               "When my parents/carers make a promise, I don’t know if they will keep it",
-               "When my parents/carers say they will do something, sometimes they don’t really do it",
-               "My parents/carers get mad at me with no warning",
-               "My parents/carers punish me for no reason",
-               "My parents/carers trust me",
-               "My parents/carers accept me for myself",
-               "My parents/carers encourage me to be true to myself",
-               "My parents/carers try to understand my point of view",
-               "My parents/carers are always telling me what to do",
-               "My parents/carers boss me",
-               "My parents/carers think there is only one right way to do things — their way",
-               "My parents/carers say \"no\" to everything")
+               "My parents/carers think I’m special"),
+    pascq_rejection <- c("Sometimes I wonder if my parents/carers like me",
+                         "My parents/carers think I’m always in the way",
+                         "My parents/carers make me feel like I’m not wanted",
+                         "Nothing I do is good enough for my parents/carers"),
+    pascq_structure <- c("When I want to do something, my parents/carers show me how",
+                         "When I want to understand how something works, my parents/carers explain it to me",
+                         "If I ever have a problem, my parents/carers help me to figure out what to do about it",
+                         "My parents/carers explain the reasons for our family rules"),
+    pascq_chaos <- c("When my parents/carers make a promise, I don’t know if they will keep it",
+                     "When my parents/carers say they will do something, sometimes they don’t really do it",
+                     "My parents/carers get mad at me with no warning",
+                     "My parents/carers punish me for no reason"),
+    pascq_autonomy <- c("My parents/carers trust me",
+                        "My parents/carers accept me for myself",
+                        "My parents/carers encourage me to be true to myself",
+                        "My parents/carers try to understand my point of view"),
+    pascq_coercion <- c("My parents/carers are always telling me what to do",
+                        "My parents/carers boss me",
+                        "My parents/carers think there is only one right way to do things — their way",
+                        "My parents/carers say \"no\" to everything")
   )
 
   # Scoring mappings
@@ -101,7 +102,12 @@ extract_questions <- function(data, subjID_col = NULL, remove = NULL, sum_only =
     o2s3 = c("0 - Strongly disagree" = 0, "1 - Moderately disagree" = 1,
              "2 - Moderately agree" = 2, "3 - Strongly agree" = 3,
              "Prefer not to say" = NA),
-    pascq_scoring <- c("Not at all true" = 0, "Not very true" = 1, "Sort of true" = 2, "Very true" = 3, "Prefer not to say" = NA)
+    pascq <- c("Not at all true" = 0, "Not very true" = 1, "Sort of true" = 2, "Very true" = 3, "Prefer not to say" = NA),
+    pascq <- c("Not at all true" = 0, "Not very true" = 1, "Sort of true" = 2, "Very true" = 3, "Prefer not to say" = NA),
+    pascq <- c("Not at all true" = 0, "Not very true" = 1, "Sort of true" = 2, "Very true" = 3, "Prefer not to say" = NA),
+    pascq <- c("Not at all true" = 0, "Not very true" = 1, "Sort of true" = 2, "Very true" = 3, "Prefer not to say" = NA),
+    pascq <- c("Not at all true" = 0, "Not very true" = 1, "Sort of true" = 2, "Very true" = 3, "Prefer not to say" = NA),
+    pascq <- c("Not at all true" = 0, "Not very true" = 1, "Sort of true" = 2, "Very true" = 3, "Prefer not to say" = NA)
   )
 
 
