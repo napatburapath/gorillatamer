@@ -46,6 +46,12 @@ Function to return participant id if failed more than 2 questions.
 * Run: `library(gorillatamer)`
 
 
+# Updates
+
+## v2.0.0
+* PASCQ scales no longer produce sum score - the six subscales are now calculated independently.
+
+
 
 
 Things still to do:
